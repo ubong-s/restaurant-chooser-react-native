@@ -8,24 +8,27 @@ import {
   IOSTabNavigationScreen,
 } from "./navigation/TabNavigationScreen";
 import { RestaurantContextProvider } from "./context/RestaurantContext";
+import { PeopleContextProvider } from "./context/PeopleContext";
 
 const platformOS = Platform.OS.toLowerCase();
 
 export default function App() {
   return (
-    <RestaurantContextProvider>
-      <NativeBaseProvider>
-        <SafeAreaView style={styles.container}>
-          {platformOS === "android" ? (
-            <AndroidTabNavigationScreen />
-          ) : (
+    <PeopleContextProvider>
+      <RestaurantContextProvider>
+        <NativeBaseProvider>
+          <SafeAreaView style={styles.container}>
             <IOSTabNavigationScreen />
-          )}
-
-          <ExpoStatusBar style="auto" />
-        </SafeAreaView>
-      </NativeBaseProvider>
-    </RestaurantContextProvider>
+            {/* {platformOS === "android" ? (
+              <AndroidTabNavigationScreen />
+            ) : (
+              <IOSTabNavigationScreen />
+            )} */}
+            <ExpoStatusBar style="auto" />
+          </SafeAreaView>
+        </NativeBaseProvider>
+      </RestaurantContextProvider>
+    </PeopleContextProvider>
   );
 }
 

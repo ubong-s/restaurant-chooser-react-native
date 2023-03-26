@@ -1,18 +1,5 @@
-import {
-  Alert,
-  View,
-  FlatList,
-  Platform,
-  ScrollView,
-  Text,
-  StyleSheet,
-  BackHandler,
-} from "react-native";
-import { CustomButton } from "../components/CustomButton";
-import { CustomTextInput } from "../components/CustomTextInput";
+import { View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Picker } from "native-base";
 import { ListScreen } from "./ListScreen";
 import { AddScreen } from "./AddScreen";
 
