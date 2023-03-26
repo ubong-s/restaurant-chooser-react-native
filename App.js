@@ -1,25 +1,31 @@
+import "react-native-gesture-handler";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { View } from "react-native";
 import { StatusBar } from "react-native";
+import { NativeBaseProvider } from "native-base";
 import { StyleSheet, Platform, SafeAreaView } from "react-native";
 import {
   AndroidTabNavigationScreen,
   IOSTabNavigationScreen,
 } from "./navigation/TabNavigationScreen";
+import { RestaurantContextProvider } from "./context/RestaurantContext";
 
 const platformOS = Platform.OS.toLowerCase();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      {platformOS === "android" ? (
-        <AndroidTabNavigationScreen />
-      ) : (
-        <IOSTabNavigationScreen />
-      )}
+    <RestaurantContextProvider>
+      <NativeBaseProvider>
+        <SafeAreaView style={styles.container}>
+          {platformOS === "android" ? (
+            <AndroidTabNavigationScreen />
+          ) : (
+            <IOSTabNavigationScreen />
+          )}
 
-      <ExpoStatusBar style="auto" />
-    </SafeAreaView>
+          <ExpoStatusBar style="auto" />
+        </SafeAreaView>
+      </NativeBaseProvider>
+    </RestaurantContextProvider>
   );
 }
 
