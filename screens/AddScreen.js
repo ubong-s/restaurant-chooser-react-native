@@ -1,14 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
-import {
-  Input,
-  Select,
-  FormControl,
-  CheckIcon,
-  WarningOutlineIcon,
-} from "native-base";
-import { CustomButton } from "../components/CustomButton";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { Input, Select, FormControl, CheckIcon, Button } from "native-base";
 import { useRestaurantContext } from "../context/RestaurantContext";
 
 export const AddScreen = ({ navigation }) => {
@@ -141,23 +133,27 @@ export const AddScreen = ({ navigation }) => {
             />
           </View>
           <View style={styles.addScreenButtonsContainer}>
-            <CustomButton
-              text="Cancel"
-              width="50%"
+            <Button
+              size="lg"
+              style={styles.button}
               onPress={() => {
                 navigation.navigate("Restaurant List");
               }}
-            />
-            <CustomButton
-              text="Save"
-              width="45%"
+            >
+              Cancel
+            </Button>
+            <Button
+              size="lg"
+              style={styles.button}
               onPress={() => {
                 let tempRestaurants = [...restaurants, restaurant];
                 setRestaurants(tempRestaurants);
                 storeRestaurantsAsync(tempRestaurants);
                 navigation.navigate("Restaurant List");
               }}
-            />
+            >
+              Save
+            </Button>
           </View>
         </View>
       </View>
@@ -185,5 +181,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     paddingTop: 20,
+  },
+  button: {
+    flexDirection: "row",
+    flex: 1,
   },
 });

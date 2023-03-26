@@ -8,8 +8,7 @@ import {
   Alert,
   BackHandler,
 } from "react-native";
-import { useToast } from "native-base";
-import { CustomButton } from "../components/CustomButton";
+import { useToast, Button } from "native-base";
 import { usePeopleContext } from "../context/PeopleContext";
 
 export const PeopleListScreen = ({ navigation }) => {
@@ -40,21 +39,24 @@ export const PeopleListScreen = ({ navigation }) => {
 
   return (
     <View style={styles.listScreenContainer}>
-      <CustomButton
-        text="Add Person"
-        width="100%"
+      <Button
         onPress={() => {
           navigation.navigate("Add Person");
         }}
-      />
+        size="lg"
+        width="100%"
+      >
+        Add Person
+      </Button>
       <FlatList
         style={styles.peopleList}
         data={people}
         renderItem={({ item }) => (
           <View style={styles.personContainer}>
             <Text style={styles.personName}>{item.name}</Text>
-            <CustomButton
-              text="Delete"
+            <Button
+              size="lg"
+              style={styles.button}
               onPress={() => {
                 Alert.alert(
                   "Please confirm",
@@ -79,7 +81,9 @@ export const PeopleListScreen = ({ navigation }) => {
                   { cancelable: true }
                 );
               }}
-            />
+            >
+              Delete
+            </Button>
           </View>
         )}
       />
@@ -108,4 +112,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   personName: { flex: 1 },
+  button: {
+    marginTop: 5,
+    marginBottom: 10,
+  },
 });

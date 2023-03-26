@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   FlatList,
   View,
@@ -8,9 +8,7 @@ import {
   Alert,
   BackHandler,
 } from "react-native";
-import { useToast } from "native-base";
-
-import { CustomButton } from "../components/CustomButton";
+import { useToast, Button } from "native-base";
 import { useRestaurantContext } from "../context/RestaurantContext";
 
 export const ListScreen = ({ navigation }) => {
@@ -42,21 +40,24 @@ export const ListScreen = ({ navigation }) => {
 
   return (
     <View style={styles.listScreenContainer}>
-      <CustomButton
-        text="Add Restaurant"
-        width="100%"
+      <Button
         onPress={() => {
           navigation.navigate("Add Restaurant");
         }}
-      />
+        size="lg"
+        width="100%"
+      >
+        Add Restaurant
+      </Button>
       <FlatList
         style={styles.restaurantList}
         data={restaurants}
         renderItem={({ item }) => (
           <View style={styles.restaurantContainer}>
             <Text style={styles.restaurantName}>{item.name}</Text>
-            <CustomButton
-              text="Delete"
+            <Button
+              size="lg"
+              style={styles.button}
               onPress={() => {
                 Alert.alert(
                   "Please confirm",
@@ -81,7 +82,9 @@ export const ListScreen = ({ navigation }) => {
                   { cancelable: true }
                 );
               }}
-            />
+            >
+              Delete
+            </Button>
           </View>
         )}
       />
@@ -110,4 +113,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   restaurantName: { flex: 1 },
+  button: {
+    marginTop: 5,
+    marginBottom: 10,
+  },
 });
