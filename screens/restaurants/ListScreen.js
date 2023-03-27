@@ -9,7 +9,7 @@ import {
   BackHandler,
 } from "react-native";
 import { useToast, Button } from "native-base";
-import { useRestaurantContext } from "../context/RestaurantContext";
+import { useRestaurantContext } from "../../context/RestaurantContext";
 
 export const ListScreen = ({ navigation }) => {
   const toast = useToast();

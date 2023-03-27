@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import { PeopleScreen } from "../screens/PeopleScreen";
-import { DecisionScreen } from "../screens/DecisionScreen";
-import { RestaurantsScreen } from "../screens/RestaurantsScreen";
+import { PeopleScreen } from "../screens/people";
+import { DecisionScreen } from "../screens/decision";
+import { RestaurantsScreen } from "../screens/restaurants";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 

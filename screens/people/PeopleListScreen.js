@@ -9,7 +9,7 @@ import {
   BackHandler,
 } from "react-native";
 import { useToast, Button } from "native-base";
-import { usePeopleContext } from "../context/PeopleContext";
+import { usePeopleContext } from "../../context/PeopleContext";
 
 export const PeopleListScreen = ({ navigation }) => {
   const toast = useToast();

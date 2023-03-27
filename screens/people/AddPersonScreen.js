@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { Input, Button } from "native-base";
-import { CustomButton } from "../components/CustomButton";
-import { usePeopleContext } from "../context/PeopleContext";
+import { usePeopleContext } from "../../context/PeopleContext";
 
 export const AddPersonScreen = ({ navigation }) => {
   const [person, setPerson] = useState({
     name: "",
+    relationship: "",
     key: `r_${new Date().getTime()}`,
   });
 
@@ -27,6 +27,20 @@ export const AddPersonScreen = ({ navigation }) => {
             }
             size="2xl"
             placeholder="Name"
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Input
+            value={person.relationship}
+            w="100%"
+            onChangeText={(inItemValue) =>
+              setPerson({
+                ...person,
+                relationship: inItemValue,
+              })
+            }
+            size="2xl"
+            placeholder="Relationship"
           />
         </View>
 
